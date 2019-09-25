@@ -1,19 +1,7 @@
 import React, { Component } from "react";
 import "./styles/App.css";
-import Glasses from "../Glasses";
-import WineList from "./WineList";
-import AddForm from "./AddForm";
-import Button from "@material-ui/core/Button";
-import FilterForm from "./FilterForm";
 import WineTable from "./WineTable";
 import AddEditForm from "./AddEditForm";
-import MatTable from "./MatTable";
-import MobileBlocks from "./MobileBlocks";
-import { transcode } from "buffer";
-import { tsCallSignatureDeclaration } from "@babel/types";
-// import BlocksTest from "./BlocksTest";
-// import RenderTableData from "./RenderTableData";
-// import RenderTableHeader from "./RenderTableHeader";
 
 class App extends Component {
   constructor(props) {
@@ -37,9 +25,6 @@ class App extends Component {
     this.onClick = this.onClick.bind(this);
     this.onClear = this.onClear.bind(this);
     this.onCurItemClear = this.onCurItemClear.bind(this);
-
-    // this.filterWines = this.filterWines.bind(this);
-    // this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -71,7 +56,7 @@ class App extends Component {
 
     const glasses = this.state.glasses;
 
-    const setCurItem = glasses.map(result => {
+    glasses.map(result => {
       if (result._id === id) {
         return this.setState({ curItem: result });
       }
@@ -151,8 +136,6 @@ class App extends Component {
         return (
           result.grape1 === id || result.grape2 === id || result.grape3 === id
         );
-
-        //safgasfg
       } else if (value === "year") {
         return result.year === id;
       } else if (value === "place") {
@@ -180,19 +163,6 @@ class App extends Component {
     this.setState({ glasses: grapes });
   };
 
-  // filterWines = wineFilter => {
-  //   //todo
-  //   let filteredWines = this.state.glasses;
-  //   filteredWines = filteredWines.filter(wine => {
-  //     let wineName = filteredWines.name.toLowerCase();
-  //     return wineName.indexOf(wineFilter.toLowerCase()) !== -1;
-  //   });
-  //   this.setState({ filteredWines });
-  // };
-  // handleChange = event => {
-  //   this.setState({ wineFilter: event.target.value });
-  //   this.props.onChange(event.target.value);
-  // };
   onClick = event => {
     this.setState(state => ({ showMyComponent: !this.state.showMyComponent }));
   };
@@ -215,20 +185,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <MobileBlocks
-          glasses={this.state.glasses}
-          handleSelect={this.handleSelect}
-          wines={this.state.filteredWines}
-          match={this.props.match}
-          onSelect={this.onSelect}
-          onClick={this.onClick}
-          onClear={this.onClear}
-          curItem={this.state.curItem}
-          justAdded={this.justAdded}
-          justRemoved={this.justRemoved}
-        /> */}
-
-        {/* <MatTable glasses={this.state.glasses} /> */}
         <AddEditForm
           handleSubmit={this.handleSubmit}
           curItem={this.state.curItem}
