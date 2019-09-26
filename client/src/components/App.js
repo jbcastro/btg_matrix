@@ -215,7 +215,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <MobileBlocks
+        <MobileBlocks
           glasses={this.state.glasses}
           handleSelect={this.handleSelect}
           wines={this.state.filteredWines}
@@ -226,7 +226,7 @@ class App extends Component {
           curItem={this.state.curItem}
           justAdded={this.justAdded}
           justRemoved={this.justRemoved}
-        /> */}
+        />
 
         {/* <MatTable glasses={this.state.glasses} /> */}
         <AddEditForm
