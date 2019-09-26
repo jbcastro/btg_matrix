@@ -58,6 +58,7 @@ const AddEditForm = props => {
 
   return (
     <div>
+      <h1>Admin Mode</h1>
       <form className={classes.container} noValidate autoComplete="off">
         <TextField
           required
@@ -90,7 +91,6 @@ const AddEditForm = props => {
           value={props.curItem.grape1 || ""}
           margin="normal"
         />
-
         <TextField
           label="Grape 2"
           type="text"
@@ -348,7 +348,7 @@ const AddEditForm = props => {
         className={classes.button}
         onClick={() => handleOnClick()}
       >
-        delete brah?
+        delete
       </Button>
       <Button
         variant="contained"
