@@ -5,12 +5,13 @@ import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
-import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
+import TablePagination from "@material-ui/core/TablePagination";
+
 import Button from "@material-ui/core/Button";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import { maxWidth, flexbox } from "@material-ui/system";
-import { purple } from "@material-ui/core/colors";
+import { purple, red } from "@material-ui/core/colors";
 
 const WineTable = props => {
   const handleSelect = props.handleSelect;
@@ -30,43 +31,33 @@ const WineTable = props => {
   const mise = "mise";
   const color = "color";
   const status = "status";
+  const vinyard = "vinyard";
   let funfact;
   const onClear = props.onClear;
+  const showAddForm = props.showAddForm;
 
   const useStyles = makeStyles(theme => ({
     button: {
-      margin: theme.spacing(1)
+      color: "red",
+      fontSize: ".4em"
     },
-    input: {
-      display: "none"
-    },
+    input: {},
     root: {
-      width: "100%",
-      marginTop: theme.spacing(3),
-      overflowX: "auto",
-      fontSize: 8
+      // maxWidth: "100%",
+      // marginTop: theme.spacing(3),
+      // fontSize: 8
     },
 
-    table: {
-      minWidth: 100,
-      width: "100%"
+    table: {},
+    TableRow: {},
+    Paper: {},
+    head: {},
+    body: {},
+    tableCell: {
+      //
     },
-    tableRow: {
-      height: "1px",
-      maxWidth: "1px"
-    },
-    Paper: {
-      display: "flex"
-    },
-    head: {
-      display: "flex-box",
-      fontSize: 8
-    },
-    body: {
-      fontSize: 8
-    },
-    TableCell: {
-      size: "small"
+    CellDown: {
+      fontSize: ".6em"
     }
   }));
 
@@ -74,27 +65,62 @@ const WineTable = props => {
 
   return (
     <Paper className={classes.root}>
+      <ButtonBase onClick={event => onClear(event)}>Clear Filters</ButtonBase>
+      <p></p>
+      <ButtonBase onClick={event => showAddForm(event)}>
+        Show/hide Add Form
+      </ButtonBase>
       <Table className={classes.table}>
         <TableHead className={classes.head}>
-          <ButtonBase onClick={event => onClear(event)}>
-            Clear Filters
-          </ButtonBase>
-          <TableRow className={classes.tableRow}>
-            <TableCell emphasis="bold">Name</TableCell>
-            <TableCell align="center">Grapes</TableCell>
-            <TableCell align="center">Individual Grapes</TableCell>
-            <TableCell align="center">Year</TableCell>
-            <TableCell align="center">Place</TableCell>
-            <TableCell align="center">Area</TableCell>
-            <TableCell align="center">Country</TableCell>
-            <TableCell align="center">Appellation</TableCell>
-            <TableCell align="center">Mise</TableCell>
-            <TableCell align="center">Description</TableCell>
-            <TableCell align="center">Price</TableCell>
-            <TableCell align="center">Mise</TableCell>
-            <TableCell align="center">Color</TableCell>
-            <TableCell align="center">Status</TableCell>
-            <TableCell align="center">Fun Fact</TableCell>
+          <TableRow className={classes.TableRow}>
+            <TableCell className={classes.CellDown} align="center">
+              Name
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Vinyard
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Grapes
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Individual Grapes
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Year
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Place
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Area
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Country
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Appellation
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Mise
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Description
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Price
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Mise
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Color
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Status
+            </TableCell>
+            <TableCell className={classes.CellDown} align="center">
+              Fun Fact
+            </TableCell>
           </TableRow>
         </TableHead>
         {/* start table TableBody
@@ -104,21 +130,37 @@ const WineTable = props => {
             g
         } */}
 
-        <TableBody className={classes.tableRow}>
+        <TableBody className={classes.TableRow}>
           {props.glasses.map((glass, idx) => (
-            <TableRow key={glass._id}>
-              <TableCell component="th" scope="row">
-                Name<p></p>
+            <TableRow className={classes.TableRow} key={glass._id}>
+              <TableCell className={classes.tableCell}>
+                <h5>Name</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass._id}
                   onClick={event => handleSelect(event)}
                 >
                   {glass.name}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Grapes<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Vinyard</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
+                  id={glass.vinyard}
+                  value={vinyard}
+                  onClick={event => onSelect(event)}
+                >
+                  {glass.vinyard}
+                </ButtonBase>
+              </TableCell>
+              <TableCell className={classes.tableCell}>
+                <h5>Grapes</h5>
+                <p></p>
+                <ButtonBase
+                  className={classes.button}
                   component="button"
                   id={glass.grapes}
                   value={grapes}
@@ -128,9 +170,11 @@ const WineTable = props => {
                 </ButtonBase>
               </TableCell>
 
-              <TableCell>
-                Indiv<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Indiv</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.grape1}
                   value={grape}
                   onClick={event => onSelect(event)}
@@ -139,6 +183,7 @@ const WineTable = props => {
                 </ButtonBase>
                 &nbsp;
                 <ButtonBase
+                  className={classes.button}
                   id={glass.grape2}
                   value={grape}
                   onClick={event => onSelect(event)}
@@ -147,6 +192,7 @@ const WineTable = props => {
                 </ButtonBase>
                 &nbsp;
                 <ButtonBase
+                  className={classes.button}
                   id={glass.grape3}
                   value={grape}
                   onClick={event => onSelect(event)}
@@ -154,9 +200,11 @@ const WineTable = props => {
                   {glass.grape3}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Year<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Year</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.year}
                   value={year}
                   onClick={event => onSelect(event)}
@@ -164,9 +212,11 @@ const WineTable = props => {
                   {glass.year}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Place<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>place</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.place}
                   value={place}
                   onClick={event => onSelect(event)}
@@ -174,9 +224,11 @@ const WineTable = props => {
                   {glass.place}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Area<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Area</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.area}
                   value={area}
                   onClick={event => onSelect(event)}
@@ -184,9 +236,11 @@ const WineTable = props => {
                   {glass.area}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Country<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Country</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.country}
                   value={country}
                   onClick={event => onSelect(event)}
@@ -194,9 +248,11 @@ const WineTable = props => {
                   {glass.country}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Appellation<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Appell</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.appellation}
                   value={appellation}
                   onClick={event => onSelect(event)}
@@ -204,9 +260,11 @@ const WineTable = props => {
                   {glass.appellation}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Mise<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Mise</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.mise}
                   value={mise}
                   onClick={event => onSelect(event)}
@@ -214,9 +272,11 @@ const WineTable = props => {
                   {glass.mise}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Description<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Descrip</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description1}
                   value={description}
                   onClick={event => onSelect(event)}
@@ -225,14 +285,16 @@ const WineTable = props => {
                 </ButtonBase>
                 &nbsp;
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description2}
                   value={description}
                   onClick={event => onSelect(event)}
                 >
                   {glass.description2}
                 </ButtonBase>
-                &nbsp;
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description3}
                   value={description}
                   onClick={event => onSelect(event)}
@@ -241,13 +303,16 @@ const WineTable = props => {
                 </ButtonBase>
                 &nbsp;
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description4}
                   value={description}
                   onClick={event => onSelect(event)}
                 >
                   {glass.description4}
                 </ButtonBase>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description5}
                   value={description}
                   onClick={event => onSelect(event)}
@@ -256,14 +321,16 @@ const WineTable = props => {
                 </ButtonBase>
                 &nbsp;
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description6}
                   value={description}
                   onClick={event => onSelect(event)}
                 >
                   {glass.description6}
                 </ButtonBase>
-                &nbsp;
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description7}
                   value={description}
                   onClick={event => onSelect(event)}
@@ -272,14 +339,16 @@ const WineTable = props => {
                 </ButtonBase>
                 &nbsp;
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description8}
                   value={description}
                   onClick={event => onSelect(event)}
                 >
                   {glass.description8}
                 </ButtonBase>
-                &nbsp;
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description9}
                   value={description}
                   onClick={event => onSelect(event)}
@@ -288,6 +357,7 @@ const WineTable = props => {
                 </ButtonBase>
                 &nbsp;
                 <ButtonBase
+                  className={classes.button}
                   id={glass.description10}
                   value={description}
                   onClick={event => onSelect(event)}
@@ -295,9 +365,11 @@ const WineTable = props => {
                   {glass.description10}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Price<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Price</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.price}
                   value={price}
                   onClick={event => onSelect(event)}
@@ -305,9 +377,11 @@ const WineTable = props => {
                   {glass.price}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Mise<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Mise</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.mise}
                   value={mise}
                   onClick={event => onSelect(event)}
@@ -315,8 +389,9 @@ const WineTable = props => {
                   {glass.mise}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Color<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Color</h5>
+                <p></p>
                 <ButtonBase
                   id={glass.color}
                   value={color}
@@ -325,9 +400,11 @@ const WineTable = props => {
                   {glass.color}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                Status<p></p>
+              <TableCell className={classes.tableCell}>
+                <h5>Status</h5>
+                <p></p>
                 <ButtonBase
+                  className={classes.button}
                   id={glass.status}
                   value={status}
                   onClick={event => onSelect(event)}
@@ -335,8 +412,11 @@ const WineTable = props => {
                   {glass.status}
                 </ButtonBase>
               </TableCell>
-              <TableCell>
-                <ButtonBase onClick={event => onClick(event)}>
+              <TableCell className={classes.tableCell}>
+                <ButtonBase
+                  className={classes.button}
+                  onClick={event => onClick(event)}
+                >
                   {showMyComponent
                     ? (funfact = glass.funfact + "  " + "CLICK HERE TO CLOSE")
                     : (funfact = "Click Me")}

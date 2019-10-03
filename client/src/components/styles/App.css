@@ -32,19 +32,25 @@
     transform: rotate(360deg);
   }
 }
-
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+h5 {
+  font-size: 0.7em;
 }
 
-td,
-th {
-  border: 1px solid #dddddd;
-  text-align: left;
+/* table {
+} */
 
-  /* padding: 8px; */
+/* td,
+th {
+} */
+tr {
+  display: flex;
+  width: flex;
+}
+
+td {
+  border-style: solid;
+  display: -webkit-flex; /* Safari */
+  display: flex;
 }
 
 tr:nth-child(even) {

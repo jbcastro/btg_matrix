@@ -14,7 +14,8 @@ class App extends Component {
       filteredWines: [],
       unFilteredWines: [],
 
-      showMyComponent: false
+      showMyComponent: false,
+      addFormHidden: true
     };
     this.handleSelect = this.handleSelect.bind(this);
 
@@ -25,6 +26,7 @@ class App extends Component {
     this.onClick = this.onClick.bind(this);
     this.onClear = this.onClear.bind(this);
     this.onCurItemClear = this.onCurItemClear.bind(this);
+    this.showAddForm = this.showAddForm.bind(this);
   }
 
   componentDidMount() {
@@ -136,6 +138,8 @@ class App extends Component {
         return (
           result.grape1 === id || result.grape2 === id || result.grape3 === id
         );
+      } else if (value === "vinyard") {
+        return result.vinyard === id;
       } else if (value === "year") {
         return result.year === id;
       } else if (value === "place") {
@@ -174,6 +178,9 @@ class App extends Component {
   onCurItemClear = event => {
     this.setState({ curItem: {} });
   };
+  showAddForm = event => {
+    this.setState(state => ({ addFormHidden: !this.state.addFormHidden }));
+  };
 
   ///render portion
 
@@ -183,27 +190,50 @@ class App extends Component {
   //
 
   render() {
-    return (
-      <div className="App">
-        <AddEditForm
-          handleSubmit={this.handleSubmit}
-          curItem={this.state.curItem}
-          onChange={this.onChange}
-          handleOnClick={this.handleOnClick}
-          onCurItemClear={this.onCurItemClear}
-        />
-        <WineTable
-          glasses={this.state.glasses}
-          handleSelect={this.handleSelect}
-          wines={this.state.filteredWines}
-          match={this.props.match}
-          onSelect={this.onSelect}
-          onClick={this.onClick}
-          showMyComponent={this.state.showMyComponent}
-          onClear={this.onClear}
-        />
-      </div>
-    );
+    if (!this.state.addFormHidden) {
+      return (
+        <div className="App">
+          <h1>Admin Mode</h1>
+
+          <AddEditForm
+            handleSubmit={this.handleSubmit}
+            curItem={this.state.curItem}
+            onChange={this.onChange}
+            handleOnClick={this.handleOnClick}
+            onCurItemClear={this.onCurItemClear}
+          />
+          <WineTable
+            glasses={this.state.glasses}
+            handleSelect={this.handleSelect}
+            wines={this.state.filteredWines}
+            match={this.props.match}
+            onSelect={this.onSelect}
+            onClick={this.onClick}
+            showMyComponent={this.state.showMyComponent}
+            onClear={this.onClear}
+            showAddForm={this.showAddForm}
+          />
+        </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          <h1>Admin Mode</h1>
+
+          <WineTable
+            glasses={this.state.glasses}
+            handleSelect={this.handleSelect}
+            wines={this.state.filteredWines}
+            match={this.props.match}
+            onSelect={this.onSelect}
+            onClick={this.onClick}
+            showMyComponent={this.state.showMyComponent}
+            onClear={this.onClear}
+            showAddForm={this.showAddForm}
+          />
+        </div>
+      );
+    }
   }
 }
 

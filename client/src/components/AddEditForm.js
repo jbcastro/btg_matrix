@@ -58,8 +58,18 @@ const AddEditForm = props => {
 
   return (
     <div>
-      <h1>Admin Mode</h1>
       <form className={classes.container} noValidate autoComplete="off">
+        <TextField
+          required
+          label="Vinyard"
+          className={classes.textField}
+          type="text"
+          name="vinyard"
+          placeholder="vinyard"
+          onChange={props.onChange}
+          value={props.curItem.vinyard || ""}
+          margin="normal"
+        />
         <TextField
           required
           label="Name"

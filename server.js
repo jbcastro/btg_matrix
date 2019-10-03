@@ -58,7 +58,7 @@ app.post("/express_backend/add", (req, res) => {
   if (!req.body._id) {
     let small = new Wines({
       _id: req.body._id,
-      // winenum: req.body.winenum,
+      vinyard: req.body.vinyard,
       name: req.body.name,
       grape1: req.body.grape1,
       grape2: req.body.grape2,
@@ -97,7 +97,7 @@ app.post("/express_backend/add", (req, res) => {
         _id: req.body._id
       },
       {
-        // winenum: req.body.winenum,
+        vinyard: req.body.vinyard,
         name: req.body.name,
         grape1: req.body.grape1,
         grape2: req.body.grape2,

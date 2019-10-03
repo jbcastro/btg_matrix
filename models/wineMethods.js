@@ -23,7 +23,7 @@ exports.getOne = wine1 => {
 };
 
 exports.addOne = (
-  winenum1,
+  vinyard1,
   name1,
   grape11,
   grape21,
@@ -54,7 +54,7 @@ exports.addOne = (
 ) => {
   return Wines.create(
     {
-      winenum: winenum1,
+      vinyard: vinyard1,
       name: name1,
       grape1: grape11,
       grape2: grape21,
