@@ -33,7 +33,8 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#FFA07A"
   },
   cardHidden: {
-    maxWidth: 345
+    maxWidth: 345,
+    backgroundColor:"yellow",
     // display: "none"
   },
   ButtonBase: {

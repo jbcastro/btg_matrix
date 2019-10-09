@@ -33,6 +33,8 @@ class App extends Component {
 
       .then(res => {
         const glassesData = res.express;
+        glassesData.sort((a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated))
+        // glassesData.sort((a,b)=>)
 
         this.setState({ glasses: glassesData });
         this.setState({ unFilteredWines: glassesData });
