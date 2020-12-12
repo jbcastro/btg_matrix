@@ -11,7 +11,7 @@ Allows a user to view each wine as a card with all the button features that exis
 
 YouTube video explaining all the features https://youtu.be/tlma1p0AdNQ
 
-Demo. Please give it a moment to let my backed to "wake up": https://jbcastro.github.io/local_data/ 
+Demo: https://jbcastro.github.io/local_data/ 
 
 https://github.com/jbcastro/btg_user_mode
 
@@ -23,6 +23,6 @@ Allows one to view, update, add, or delete files/wines. Meant to be used on a de
 
 YouTube video explaining all the features https://youtu.be/QgAzzdkGVAU
 
-Demo. Please give it a moment to let my backed to "wake up": https://jbcastro.github.io/admin_front/
+Demo: https://jbcastro.github.io/admin_front/
 
 https://github.com/jbcastro/btg_admin_mode.git
