@@ -1,7 +1,7 @@
 # btg_matrix
 
 
-This project is a MERN stack for the wines by the glass (btg) list at my current restaurant job to serve as a wine matrix for employees to gain knowledge. It features 2 modes, one for the admin and one for the users. In August 2019 the project split into 2 parts for each mode therefor code from this repo is out of date, but code from the repos listed below is up to date.
+This project is a MERN stack for the wines by the glass (btg) list at my former restaurant job to serve as a wine matrix for employees to gain knowledge. It features 2 modes, one for the admin and one for the users. In August 2019 the project split into 2 parts for each mode therefor code from this repo is out of date, but code from the repos listed below is up to date.
 
 
 
