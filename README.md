@@ -23,6 +23,6 @@ Allows one to view, update, add, or delete files/wines. Meant to be used on a de
 
 YouTube video explaining all the features https://youtu.be/QgAzzdkGVAU
 
-Demo: https://admin-mode-demo.herokuapp.com/ Please give time for my backend to load
+Demo: [https://admin-mode-demo.herokuapp.com/](https://admin-back.herokuapp.com/) Please give time for my backend to load
 
 https://github.com/jbcastro/btg_admin_mode.git
